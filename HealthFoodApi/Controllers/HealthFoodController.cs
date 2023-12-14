@@ -42,5 +42,34 @@ namespace HealthFoodApi.Controllers
 
             return Ok(retValue);
         }
+        [HttpPost("UploadFoodPhoto")]
+        public async Task<IActionResult> UploadFoodPhoto([FromForm] IFormFile file, [FromForm]UploadPhoto uploadPhoto)
+        {
+            var retValue = await _repo.UploadFoodPhoto(file,uploadPhoto);
+
+            return Ok(retValue);
+        }
+        [HttpGet("GetPhoto")]
+        public async Task<IActionResult> GetPhoto()
+        {
+            var retValue = await _repo.GetPhoto();
+
+            return Ok(retValue);
+        }
+        [HttpPost("UpdatePhoto")]
+        public async Task<IActionResult> UpdatePhoto([FromForm]IFormFile file,[FromForm]PhotoUpdate photoUpdate)
+        {
+            var retValue = await _repo.UpdatePhoto(file, photoUpdate);
+
+            return Ok(retValue);
+        }
+        [HttpDelete("DeletePhoto")]
+        public async Task<IActionResult> DeletePhoto(int foodPhotoId)
+        {
+            var retValue = await _repo.DeletePhoto(foodPhotoId);
+
+            return Ok(retValue);
+        }
+
     };
 }

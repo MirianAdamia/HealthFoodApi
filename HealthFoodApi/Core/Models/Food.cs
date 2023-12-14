@@ -1,4 +1,6 @@
-﻿namespace HealthFoodApi.Core.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace HealthFoodApi.Core.Models
 {
     public class Food
     {
