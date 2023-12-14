@@ -8,6 +8,5 @@ namespace HealthFoodApi.Infrastructure
         public DbRepo(DbContextOptions<DbRepo> options) : base(options) { }
         public DbSet<Food> Food { get; set; }
         public DbSet<FoodPhoto> FoodPhoto { get; set; }
-
     }
 }
