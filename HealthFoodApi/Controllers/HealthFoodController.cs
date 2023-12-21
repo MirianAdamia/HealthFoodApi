@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace HealthFoodApi.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class HealthFoodController : ControllerBase
     {
         private readonly IHealthFoodRepo _repo;
@@ -70,6 +70,5 @@ namespace HealthFoodApi.Controllers
 
             return Ok(retValue);
         }
-
     };
 }

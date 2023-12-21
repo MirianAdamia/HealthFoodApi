@@ -9,5 +9,6 @@ namespace HealthFoodApi.Core.Models
         public string? FoodNameLat { get; set; }
         public bool IsActive { get; set; }
         public DateTime Created { get; set; }
+
     }
 }
