@@ -2,10 +2,8 @@
 
 namespace HealthFoodApi.Core.Models
 {
-    public class ResponseCostume
+    public class ResponseCostume: ResponseCostumeBase
     {
-        public int StatusCode { get; set; }
-        public string Content { get; set; }
         public string ContentType { get; set; }
     }
 }

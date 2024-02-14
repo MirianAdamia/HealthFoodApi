@@ -17,12 +17,15 @@ namespace HealthFoodApi.Core.Repositories
         public async Task<IEnumerable<Food>> GetFood()
         {
 
-            var result =  await _dbmanager.Food.ToListAsync();
-            var filtre = result.Where(x=>x.IsActive == true);
-            return filtre;
+            var result = await _dbmanager.Food
+                             .Where(x => x.IsActive)
+                             .OrderByDescending(x => x.Created)
+                             .ToListAsync();
+            
+            return result;
         }
 
-        public async Task<string> AddFood(FoodAdd data)
+        public async Task<ResponseCostumeBase> AddFood(FoodAdd data)
         {
             var food = new Food()
             {
@@ -34,7 +37,13 @@ namespace HealthFoodApi.Core.Repositories
 
             _dbmanager.Food.Add(food);
             await _dbmanager.SaveChangesAsync();
-            return ("წარმატებით დაემატა პროდუქტი");
+
+            var result = new ResponseCostumeBase()
+            {
+                StatusCode = 200,
+                Content = "მონაცემი წარმატებით წაიშალა"
+            };
+            return (result);
         }
 
         public async Task<ResponseCostume> UpdateFood(FoodUpdate data)
