@@ -6,6 +6,7 @@ namespace HealthFoodApi.Core.Interfaces
     public interface IHealthFoodRepo
     {
         Task<IEnumerable<Food>> GetFood();
+        Task<Food> GetFoodFoodId(int foodId);
         Task<ResponseCostumeBase> AddFood(FoodAdd data);
         Task<ResponseCostume> UpdateFood(FoodUpdate data);
         Task<ResponseCostume> DeleteFood(int foodId);

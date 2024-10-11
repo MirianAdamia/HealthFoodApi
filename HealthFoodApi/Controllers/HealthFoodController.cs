@@ -21,6 +21,13 @@ namespace HealthFoodApi.Controllers
 
             return Ok(retValue);
         }
+        [HttpGet("GetFoodFoodId")]
+        public async Task<IActionResult> GetFoodFoodId(int foodId)
+        {
+            var retValue = await _repo.GetFoodFoodId(foodId);
+
+            return Ok(retValue);
+        }
         [HttpPost("AddFood")]
         public async Task<IActionResult> AddFood(FoodAdd data)
         {

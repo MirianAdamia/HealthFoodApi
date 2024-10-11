@@ -9,7 +9,7 @@ namespace HealthFoodApi.Core.Repositories
     public class HealthFoodRepo : IHealthFoodRepo
     {
         private readonly DbRepo _dbmanager;
-        public HealthFoodRepo(DbRepo dbmanager)       
+        public HealthFoodRepo(DbRepo dbmanager)
         {
             _dbmanager = dbmanager;
         }
@@ -21,7 +21,7 @@ namespace HealthFoodApi.Core.Repositories
                              .Where(x => x.IsActive)
                              .OrderByDescending(x => x.Created)
                              .ToListAsync();
-            
+
             return result;
         }
 
@@ -41,7 +41,7 @@ namespace HealthFoodApi.Core.Repositories
             var result = new ResponseCostumeBase()
             {
                 StatusCode = 200,
-                Content = "მონაცემი წარმატებით წაიშალა"
+                Content = "მონაცემი წარმატებით დაემატა"
             };
             return (result);
         }
@@ -214,6 +214,12 @@ namespace HealthFoodApi.Core.Repositories
                 Content = "მონაცემი წარმატებით წაიშალა"
             };
             return result;
+        }
+
+        public async Task<Food> GetFoodFoodId(int foodId)
+        {
+            return await _dbmanager.Food
+                .FirstOrDefaultAsync(x => x.IsActive && x.FoodId == foodId);
         }
     }
 }
